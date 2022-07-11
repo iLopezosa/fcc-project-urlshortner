@@ -46,9 +46,12 @@ app.post('/api/shorturl', function(req, res) {
   
   const isValid = isUrl(url);
 
-  console.log('> ', isValid);
+  console.log('>', isValid);
 
-  if(!isValid) return;
+  if(!isValid) {
+    res.send({ error: "Invalid URL" });
+    return;
+  }
 
   console.log('Valid url', url);
 
