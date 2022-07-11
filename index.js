@@ -4,7 +4,6 @@ const cors = require('cors');
 const dns = require('dns');
 const app = express();
 const bodyParser = require('body-parser');
-const isUrl = require('is-url');
 let urls = [];
 
 // Basic Configuration
