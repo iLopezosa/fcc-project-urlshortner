@@ -4,6 +4,7 @@ const cors = require('cors');
 const dns = require('dns');
 const app = express();
 const bodyParser = require('body-parser');
+const isUrl = require('is-url');
 let urls = [];
 
 // Basic Configuration
@@ -43,13 +44,7 @@ app.get('/api/shorturl/:url', function(req, res) {
 app.post('/api/shorturl', function(req, res) {
   const url = req.body.url;
   
-  const isValid =  dns.resolve4(url, false, (err, records) => {
-    if(err || records.length === 0){
-      console.log("Invalid URL");
-      return;
-    }
-    console.log("Valid URL", records);
-  });
+  const isValid = isUrl(url);
 
   console.log('> ', isValid);
 
